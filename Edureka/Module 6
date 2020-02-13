@@ -1,3 +1,27 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+
+prisoners.head()
+prisoners.tail()
+
+print('No of columns are:', len(prisoners.columns))
+
+prisoners[prisoners['No. of Inmates benefitted by Elementary Education']==0]
+
+prisoners[prisoners['No. of Inmates benefitted by Adult Education']==0]
+
+prisoners[prisoners['No. of Inmates benefitted by Higher Education']==0]
+
+prisoners[prisoners['No. of Inmates benefitted by Computer Course']==0]
+
+#Create a new column -’total_benefitted’ that is a sum of inmates benefitted through all modes
+grouped_state.append(grouped_state.sum())
+total = grouped_state.append(grouped_state.iloc[:,2:].sum(),ignore_index=True)
+total.loc[35, 'STATE/UT']='Total'
+total
+
+%matplotlib inline
+prisoners[['STATE/UT','total_benefitted']].plot(kind='bar',x="STATE/UT",y= 'total_benefitted', figsize = (12,5), color='red',title='Barchart')
+
+prisoners.iloc[:, 2:6].sum().plot(kind='pie')
